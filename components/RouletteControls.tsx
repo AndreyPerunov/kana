@@ -12,8 +12,7 @@ const enum reducerActionType {
   NEXT,
   START_ROLL,
   END_ROLL,
-  ADD_CHARACTER,
-  INITIALIZE
+  ADD_CHARACTER
 }
 
 interface Action {
@@ -84,6 +83,7 @@ function reducer(state: State, action: Action): State {
           isSliding: false
         }
       }
+
     default:
       return state
   }
@@ -102,7 +102,7 @@ export const RouletteControls = ({ className }: { className?: string }) => {
 
   // Initialize the first 10 characters
   useEffect(() => {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       // artificial delay
       setTimeout(() => {
         const character = getCharacter()
