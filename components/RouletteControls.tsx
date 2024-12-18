@@ -111,9 +111,7 @@ export const RouletteControls = ({ className }: { className?: string }) => {
     }
   }, [])
 
-  const submitHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const userInput = e.target.value.trim().toLowerCase()
-
+  const submitHandler = (userAnswer: string) => {
     // Prevent multiple clicks
     if (state.isSliding) return
 
@@ -124,10 +122,10 @@ export const RouletteControls = ({ className }: { className?: string }) => {
     if (!config.slideAnimation) {
       // If slide animation is disabled
       // move to the next character immediately
-      dispatch({ type: reducerActionType.NEXT, correct: userInput === state.current[0].romanji })
+      dispatch({ type: reducerActionType.NEXT, correct: userAnswer === state.current[0].romanji })
     } else {
       // Start sliding animation
-      dispatch({ type: reducerActionType.START_ROLL, correct: userInput === state.current[0].romanji })
+      dispatch({ type: reducerActionType.START_ROLL, correct: userAnswer === state.current[0].romanji })
     }
     if (!state.current[0]) {
       console.error("No character is provided")
@@ -135,13 +133,13 @@ export const RouletteControls = ({ className }: { className?: string }) => {
     }
 
     // Update character score
-    reduxDispatch(updateCharacterScore({ character: state.current[0], correct: userInput === state.current[0].romanji, config }))
+    reduxDispatch(updateCharacterScore({ character: state.current[0], correct: userAnswer === state.current[0].romanji, config }))
   }
 
   return (
     <div className={"flex flex-col items-center " + className}>
       <InfiniteRoulette learned={state.learned} current={state.current} toLearn={state.toLearn} isSliding={state.isSliding} animationEnd={() => dispatch({ type: reducerActionType.END_ROLL })} duration={config.animationDuration} />
-      <RouletteInput onSubmit={submitHandler} disabled={state.isSliding} />
+      <RouletteInput onSubmit={submitHandler} currentCharacter={state.current[0]} disabled={state.isSliding} />
     </div>
   )
 }

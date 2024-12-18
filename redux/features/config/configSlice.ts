@@ -6,7 +6,10 @@ const initialState = {
   animationDuration: 200,
   // UpdateCharacter
   addCharactersInProgression: true,
-  levelToAchieveToAddNewCharacters: 20
+  levelToAchieveToAddNewCharacters: 20,
+
+  // Input
+  submitOnRightAnswer: false
 }
 
 const configSlice = createSlice({

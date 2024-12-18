@@ -1,12 +1,17 @@
 "use client"
-import { FormEventHandler, useState } from "react"
+import { useState } from "react"
+import type { Character } from "@/redux/features/character/characterSlice"
+import { useSelector } from "react-redux"
+import { selectConfig } from "@/redux/selectors"
 
 interface RouletteInputProps {
-  onSubmit: FormEventHandler<HTMLInputElement>
+  onSubmit: (userAnswer: string) => void
   disabled?: boolean
+  currentCharacter?: Character
 }
 
-export const RouletteInput = ({ onSubmit, disabled = false }: RouletteInputProps) => {
+export const RouletteInput = ({ onSubmit, disabled = false, currentCharacter }: RouletteInputProps) => {
+  const config = useSelector(selectConfig)
   const [value, setValue] = useState("")
   const allowedCharacters = "abcdefghijklmnopqrstuvwxyz"
 
@@ -23,7 +28,12 @@ export const RouletteInput = ({ onSubmit, disabled = false }: RouletteInputProps
     )
       return
 
-    setValue(e.target.value)
+    if (currentCharacter && e.target.value.trim().toLowerCase() === currentCharacter.romanji && !disabled && config.submitOnRightAnswer) {
+      onSubmit(e.target.value.trim().toLowerCase())
+      setValue("")
+    } else {
+      setValue(e.target.value)
+    }
   }
 
   return (
@@ -37,7 +47,7 @@ export const RouletteInput = ({ onSubmit, disabled = false }: RouletteInputProps
       onKeyDown={e => {
         if (disabled) return
         if (e.key === "Enter" && value.trim().length > 0) {
-          onSubmit(e)
+          onSubmit(value.trim().toLowerCase())
           setValue("")
         }
       }}

@@ -358,6 +358,7 @@ const charactersSlice = createSlice({
   initialState,
   reducers: {
     updateCharacterScore(state, action) {
+      // SRS
       const { character, correct, config } = action.payload
 
       const char = state.find(char => char.symbol === character.symbol)
