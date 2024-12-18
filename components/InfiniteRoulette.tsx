@@ -14,7 +14,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
   return (
     <div className="flex gap-4 items-center">
       {/* Left Roulette */}
-      <div className="h-16 w-96 bg-white rounded-xl overflow-hidden shadow">
+      <div className="h-16 w-48 sm:w-64 lg:w-96 bg-white rounded-xl overflow-hidden shadow">
         <div
           className={`flex justify-end
             ${isSliding ? "transition-transform ease-in-out" : "translate-x-16"}`}
@@ -49,7 +49,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         </div>
       </div>
       {/* Right Roulette */}
-      <div className="h-16 w-96 bg-white rounded-xl overflow-hidden shadow">
+      <div className="h-16 w-48 sm:w-64 lg:w-96 bg-white rounded-xl overflow-hidden shadow">
         <div
           className={`flex 
           ${isSliding ? "transition-transform ease-in-out" : "translate-x-0"}`}
