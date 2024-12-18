@@ -5,7 +5,7 @@ import { Wrapper } from "@/components/Wrapper"
 export default function Home() {
   return (
     <Wrapper>
-      <RouletteControls className="mt-20" />
+      <RouletteControls className="mt-10" />
       <div className="flex justify-center">
         <Stats className="mt-10" />
       </div>
