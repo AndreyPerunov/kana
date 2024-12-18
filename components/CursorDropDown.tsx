@@ -17,8 +17,8 @@ export const CursorDropDown = ({ children, content, isExpanded, xOffset, yOffset
       className="relative"
       onMouseMove={e => {
         setCursorPosition({
-          x: e.clientX,
-          y: e.clientY
+          x: e.pageX,
+          y: e.pageY
         })
       }}
     >
