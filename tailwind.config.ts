@@ -17,6 +17,19 @@ export default {
         "level-5": "#A7D477",
         fail: "#D10363",
         success: "#04b34f"
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": {
+            opacity: "0"
+          },
+          "100%": {
+            opacity: "1"
+          }
+        }
+      },
+      animation: {
+        "fade-in": "fadeIn 0.3s ease-in-out"
       }
     }
   },

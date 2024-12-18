@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mPlus1p.className + " " + "bg-background"}>
+      <body className={mPlus1p.className + " " + "bg-background overflow-x-hidden"}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>

@@ -2,7 +2,8 @@
 import { selectCharacters } from "@/redux/selectors"
 import { useSelector } from "react-redux"
 import type { Character } from "@/redux/features/character/characterSlice"
-import { Fragment } from "react"
+import { Fragment, useState, useEffect } from "react"
+import { CursorDropDown } from "./CursorDropDown"
 
 export const Stats = ({ className }: { className?: string }) => {
   const characters = useSelector(selectCharacters)
@@ -69,9 +70,68 @@ export const Stats = ({ className }: { className?: string }) => {
 }
 
 const CharacterBlock = ({ character }: { character: Character }) => {
+  const [isHovered, setIsHovered] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  // hover effect with delay
+  useEffect(() => {
+    let timer: NodeJS.Timeout
+    if (isHovered) {
+      timer = setTimeout(() => {
+        setIsExpanded(true)
+      }, 500)
+    } else {
+      setIsExpanded(false)
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [isHovered])
+
   return (
-    <div className={`flex gap-4 items-center size-10 rounded-xl justify-center shadow transition-colors ${character.level < 20 ? "bg-level-1" : character.level < 40 ? "bg-level-2" : character.level < 60 ? "bg-level-3" : character.level < 80 ? "bg-level-4" : character.level <= 100 ? "bg-level-5" : "bg-level-1"}`}>
-      <span>{character.symbol}</span>
+    <CursorDropDown xOffset={20} yOffset={20} isExpanded={isExpanded} content={<DropdownContent character={character} />}>
+      <div
+        onMouseEnter={() => {
+          setIsHovered(true)
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false)
+        }}
+        className={`flex gap-4 items-center size-10 rounded-xl justify-center shadow transition-all border border-b-2 border-primary relative ${isExpanded ? "scale-125" : ""} ${character.level < 20 ? "bg-level-1" : character.level < 40 ? "bg-level-2" : character.level < 60 ? "bg-level-3" : character.level < 80 ? "bg-level-4" : character.level <= 100 ? "bg-level-5" : "bg-level-1"}`}
+      >
+        <span style={{ pointerEvents: "none" }} className="text-passive">
+          {character.symbol}
+        </span>
+      </div>
+    </CursorDropDown>
+  )
+}
+
+const DropdownContent = ({ character }: { character: Character }) => {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex justify-between items-center gap-8">
+        <span>Symbol:</span>
+        <span>{character.symbol}</span>
+      </div>
+      <div className="flex justify-between items-center gap-8">
+        <span>Romanji:</span>
+        <span>{character.romanji}</span>
+      </div>
+      <div className="flex justify-between items-center gap-8">
+        <span>Knowledge:</span>
+        <span>{character.level}%</span>
+      </div>
+      <div className="flex justify-between items-center gap-8">
+        <span>Frequency:</span>
+        <span>{character.weight}%</span>
+      </div>
+      <div className="flex justify-between items-center gap-8">
+        <span>Cooldown:</span>
+        <span>{character.cooldown}</span>
+      </div>
     </div>
   )
 }
