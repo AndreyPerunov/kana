@@ -2,7 +2,7 @@
 import type { Character } from "@/redux/features/character/characterSlice"
 
 type InfiniteRouletteTypes = {
-  learned: (Character | " ")[]
+  learned: ((Character & { correct: boolean }) | " ")[]
   current: Character[]
   toLearn: Character[]
   isSliding: boolean
@@ -14,7 +14,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
   return (
     <div className="flex gap-4 items-center">
       {/* Left Roulette */}
-      <div className="mt-10 h-16 w-96 bg-white rounded-xl overflow-hidden">
+      <div className="mt-10 h-16 w-96 bg-white rounded-xl overflow-hidden shadow">
         <div
           className={`flex justify-end
             ${isSliding ? "transition-transform ease-in-out" : "translate-x-16"}`}
@@ -25,13 +25,13 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         >
           {learned.map((letter, i) => (
             <div key={i} className="size-16 flex justify-center items-center shrink-0">
-              <span className="text-passive text-3xl">{(letter === " " ? " " : letter.symbol) || ""}</span>
+              <span className={`text-3xl ${letter === " " ? "" : letter.correct ? "text-primary" : "text-fail"}`}>{(letter === " " ? " " : letter.symbol) || ""}</span>
             </div>
           ))}
         </div>
       </div>
       {/* Current Character */}
-      <div className="mt-10 size-20 bg-white rounded-xl overflow-hidden">
+      <div className="mt-10 size-20 bg-white rounded-xl overflow-hidden shadow">
         <div
           className={`flex 
           ${isSliding ? "transition-transform ease-in-out" : "translate-x-0"}`}
@@ -49,7 +49,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         </div>
       </div>
       {/* Right Roulette */}
-      <div className="mt-10 h-16 w-96 bg-white rounded-xl overflow-hidden">
+      <div className="mt-10 h-16 w-96 bg-white rounded-xl overflow-hidden shadow">
         <div
           className={`flex 
           ${isSliding ? "transition-transform ease-in-out" : "translate-x-0"}`}

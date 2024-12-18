@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  slideAnimation: true, //TODO ERROR
+  slideAnimation: true,
   animationDuration: 200,
   // UpdateCharacter
   addCharactersInProgression: true,

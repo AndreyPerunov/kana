@@ -12,9 +12,11 @@ export default {
         passive: "#8B8B8B",
         "level-1": "#ffffff",
         "level-2": "#FFFFE0",
-        "level-3": "#FFFF00",
-        "level-4": "#ADFF2F",
-        "level-5": "#00FF00"
+        "level-3": "#FFE6A9",
+        "level-4": "#D5ED9F",
+        "level-5": "#A7D477",
+        fail: "#D10363",
+        success: "#04b34f"
       }
     }
   },
