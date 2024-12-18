@@ -410,6 +410,7 @@ const charactersSlice = createSlice({
         char.streak = 0
         char.weight = Math.min(char.weight + 5, 100)
         char.level = Math.max(char.level - 5, 0)
+        // Update romanji character
       }
     },
     updateCharacter(state, action) {

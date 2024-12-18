@@ -122,7 +122,7 @@ export const RouletteControls = () => {
       dispatch({ type: reducerActionType.START_ROLL })
     }
     if (state.current[0]) {
-      reduxDispatch(updateCharacterScore({ character: state.current[0], correct: false, config }))
+      reduxDispatch(updateCharacterScore({ character: state.current[0], correct: true, config }))
     } else {
       console.error("No character is provided")
     }

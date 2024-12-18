@@ -25,7 +25,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         >
           {learned.map((letter, i) => (
             <div key={i} className="size-16 flex justify-center items-center shrink-0">
-              <span className="text-[#8B8B8B] text-3xl">{(letter === " " ? " " : letter.symbol) || ""}</span>
+              <span className="text-passive text-3xl">{(letter === " " ? " " : letter.symbol) || ""}</span>
             </div>
           ))}
         </div>
@@ -43,7 +43,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         >
           {current.map((letter, i) => (
             <div key={i} className="size-20 flex justify-center items-center shrink-0">
-              <span className={`text-5xl  ${isSliding ? "text-[#8B8B8B]" : "text-secondary"} `}>{letter.symbol || ""}</span>
+              <span className={`text-5xl  ${isSliding ? "text-passive" : "text-secondary"} `}>{letter.symbol || ""}</span>
             </div>
           ))}
         </div>
@@ -60,7 +60,7 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         >
           {toLearn.map((letter, i) => (
             <div key={i} className="size-16 flex justify-center items-center shrink-0">
-              <span className="text-[#8B8B8B] text-3xl">{letter.symbol || ""}</span>
+              <span className="text-passive text-3xl">{letter.symbol || ""}</span>
             </div>
           ))}
         </div>
