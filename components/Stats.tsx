@@ -27,9 +27,9 @@ export const Stats = ({ className }: { className?: string }) => {
 
   return (
     <div className={"inline-block " + className}>
-      <div className="flex gap-4">
+      <div className="flex flex-col-reverse sm:flex-row gap-4">
         {groupedByGroup.reverse().map((group, groupIndex) => (
-          <div key={`group-${groupIndex}`} className="flex flex-col gap-4">
+          <div key={`group-${groupIndex}`} className="flex flex-row-reverse sm:flex-col gap-4">
             {group.map((character, i) => {
               const baseKey = `${character.group}-${character.symbol}-${i}`
 
