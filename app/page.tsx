@@ -3,11 +3,11 @@ import { Stats } from "@/components/Stats"
 
 export default function Home() {
   return (
-    <div>
-      <RouletteControls />
+    <>
+      <RouletteControls className="mt-10" />
       <div className="flex justify-center">
         <Stats className="mt-10" />
       </div>
-    </div>
+    </>
   )
 }

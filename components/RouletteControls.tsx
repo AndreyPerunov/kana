@@ -89,7 +89,7 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-export const RouletteControls = () => {
+export const RouletteControls = ({ className }: { className?: string }) => {
   const config = useSelector(selectConfig)
   const reduxDispatch = useDispatch()
 
@@ -139,7 +139,7 @@ export const RouletteControls = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className={"flex flex-col items-center " + className}>
       <InfiniteRoulette learned={state.learned} current={state.current} toLearn={state.toLearn} isSliding={state.isSliding} animationEnd={() => dispatch({ type: reducerActionType.END_ROLL })} duration={config.animationDuration} />
       <RouletteInput onSubmit={submitHandler} disabled={state.isSliding} />
     </div>
