@@ -14,11 +14,48 @@ export const Stats = ({ className }: { className?: string }) => {
 
   return (
     <div className={className}>
-      <DropDown title="Stats" subTitle={<ProgressBar fill={progress} />} className="mt-10">
-        <div>
-          <h1 className="text-xl">Hiragana | ひらがな</h1>
-          <h2>Gojūon | 五十音 | ごじゅうおん</h2>
-          <Hiragana className="mt-10" />
+      <DropDown title="Stats" subTitle={<ProgressBar fill={progress} />}>
+        <div className="flex flex-wrap gap-14 mt-10 justify-evenly">
+          <div>
+            <h1 className="text-xl">Hiragana | ひらがな</h1>
+            <h2>Gojūon | 五十音 | ごじゅうおん</h2>
+            <Hiragana className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Katakana | カタカナ</h1>
+            <h2>Gojūon | 五十音 | ごじゅうおん</h2>
+            <Katakana className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Hiragana Dakuten | ひらがな濁点</h1>
+            <h2>Gojūon | 五十音 | ごじゅうおん</h2>
+            <HiraganaDakuten className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Katakana Dakuten | カタカナ濁点</h1>
+            <h2>Gojūon | 五十音 | ごじゅうおん</h2>
+            <KatakanaDakuten className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Hiragana | ひらがな</h1>
+            <h2>Yōon | 拗音 | ようおん</h2>
+            <HiraganaDigraph className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Katakana | カタカナ</h1>
+            <h2>Yōon | 拗音 | ようおん</h2>
+            <KatakanaDigraph className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Hiragana Dakuten | ひらがな濁点</h1>
+            <h2>Yōon | 拗音 | ようおん</h2>
+            <HiraganDakutenDigraph className="mt-10" />
+          </div>
+          <div>
+            <h1 className="text-xl">Katakana Dakuten | カタカナ濁点</h1>
+            <h2>Yōon | 拗音 | ようおん</h2>
+            <KatakanaDakutenDigraph className="mt-10" />
+          </div>
         </div>
       </DropDown>
       <h1 className="mt-10 text-2xl flex items-center text-passive">Master Japanese Kana effortlessly! Every guess helps you improve, bringing you closer to fluency. Using the Spaced Repetition system, it helps you focus on what needs practice making your journey fun and effective. Note that short daily sessions are more effective than trying to learn everything at once!</h1>
@@ -29,7 +66,61 @@ export const Stats = ({ className }: { className?: string }) => {
 const Hiragana = ({ className }: { className?: string }) => {
   const characters = useSelector(selectCharacters)
   const hiragana = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "monograph" && character.modifier === "none")
-  const groupedByGroup = hiragana.reduce<Character[][]>((acc, character) => {
+
+  return <Gojuuon className={className} characters={hiragana} />
+}
+
+const Katakana = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const katakana = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "monograph" && character.modifier === "none")
+
+  return <Gojuuon className={className} characters={katakana} />
+}
+
+const HiraganaDakuten = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const hiraganaDakuten = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "monograph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
+
+  return <GridByGroup className={className} characters={hiraganaDakuten} />
+}
+
+const KatakanaDakuten = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const katakanaDakuten = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "monograph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
+
+  return <GridByGroup className={className} characters={katakanaDakuten} />
+}
+
+const HiraganaDigraph = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const hiraganaDigraph = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "digraph" && character.modifier === "none")
+
+  return <GridByGroup className={className} characters={hiraganaDigraph} />
+}
+
+const KatakanaDigraph = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const katakanaDigraph = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "digraph" && character.modifier === "none")
+
+  return <GridByGroup className={className} characters={katakanaDigraph} />
+}
+
+const HiraganDakutenDigraph = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const hiraganaDakutenDigraph = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "digraph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
+
+  return <GridByGroup className={className} characters={hiraganaDakutenDigraph} />
+}
+
+const KatakanaDakutenDigraph = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const katakanaDakutenDigraph = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "digraph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
+
+  return <GridByGroup className={className} characters={katakanaDakutenDigraph} />
+}
+
+const Gojuuon = ({ characters, className }: { characters: Character[]; className?: string }) => {
+  const groupedByGroup = characters.reduce<Character[][]>((acc, character) => {
     const group = character.group
 
     if (acc.length === 0) {
@@ -48,9 +139,9 @@ const Hiragana = ({ className }: { className?: string }) => {
 
   return (
     <div className={"inline-block " + className}>
-      <div className="flex flex-col-reverse sm:flex-row gap-4">
+      <div className="flex flex-col-reverse md:flex-row gap-4">
         {groupedByGroup.reverse().map((group, groupIndex) => (
-          <div key={`group-${groupIndex}`} className="flex flex-row-reverse sm:flex-col gap-4">
+          <div key={`group-${groupIndex}`} className="flex flex-row-reverse md:flex-col gap-4">
             {group.map((character, i) => {
               const baseKey = `${character.group}-${character.symbol}-${i}`
 
@@ -80,6 +171,41 @@ const Hiragana = ({ className }: { className?: string }) => {
                   </Fragment>
                 )
               }
+
+              return <CharacterBlock character={character} key={`${baseKey}-final`} />
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const GridByGroup = ({ characters, className }: { characters: Character[]; className?: string }) => {
+  const groupedByGroup = characters.reduce<Character[][]>((acc, character) => {
+    const group = character.group
+
+    if (acc.length === 0) {
+      acc.push([character])
+      return acc
+    }
+
+    if (acc[acc.length - 1][0].group === group) {
+      acc[acc.length - 1].push(character)
+    } else {
+      acc.push([character])
+    }
+
+    return acc
+  }, [])
+
+  return (
+    <div className={"inline-block " + className}>
+      <div className="flex flex-row gap-4">
+        {groupedByGroup.reverse().map((group, groupIndex) => (
+          <div key={`group-${groupIndex}`} className="flex flex-col gap-4">
+            {group.map((character, i) => {
+              const baseKey = `${character.group}-${character.symbol}-${i}`
 
               return <CharacterBlock character={character} key={`${baseKey}-final`} />
             })}
