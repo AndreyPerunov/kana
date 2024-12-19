@@ -12,7 +12,7 @@ export const DropDown = ({ children, title, subTitle, className }: { children: R
 
   return (
     <div className={"w-full " + className}>
-      <h1 className="cursor-pointer text-3xl flex items-center select-none text-passive" onClick={toggleDropdown}>
+      <h1 className="cursor-pointer text-3xl flex items-center select-none text-passive" onClick={toggleDropdown} title="Toggle dropdown">
         {<IoIosArrowDown className={`inline-block transition-transform origin-center ${isOpen ? "scale-y-100" : "-scale-y-100"}`} />} {title}
       </h1>
       {subTitle}
