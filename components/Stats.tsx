@@ -6,6 +6,7 @@ import { Fragment, useState, useEffect } from "react"
 import { CursorDropDown } from "@/components/CursorDropDown"
 import { DropDown } from "@/components/DropDown"
 import { ProgressBar } from "@/components/ProgressBar"
+import { groupCharactersBy } from "@/utils/groupCharactersBy"
 
 export const Stats = ({ className }: { className?: string }) => {
   const characters = useSelector(selectCharacters)
@@ -120,22 +121,7 @@ const KatakanaDakutenDigraph = ({ className }: { className?: string }) => {
 }
 
 const Gojuuon = ({ characters, className }: { characters: Character[]; className?: string }) => {
-  const groupedByGroup = characters.reduce<Character[][]>((acc, character) => {
-    const group = character.group
-
-    if (acc.length === 0) {
-      acc.push([character])
-      return acc
-    }
-
-    if (acc[acc.length - 1][0].group === group) {
-      acc[acc.length - 1].push(character)
-    } else {
-      acc.push([character])
-    }
-
-    return acc
-  }, [])
+  const groupedByGroup = groupCharactersBy(characters, "group")
 
   return (
     <div className={"inline-block " + className}>
@@ -182,22 +168,7 @@ const Gojuuon = ({ characters, className }: { characters: Character[]; className
 }
 
 const GridByGroup = ({ characters, className }: { characters: Character[]; className?: string }) => {
-  const groupedByGroup = characters.reduce<Character[][]>((acc, character) => {
-    const group = character.group
-
-    if (acc.length === 0) {
-      acc.push([character])
-      return acc
-    }
-
-    if (acc[acc.length - 1][0].group === group) {
-      acc[acc.length - 1].push(character)
-    } else {
-      acc.push([character])
-    }
-
-    return acc
-  }, [])
+  const groupedByGroup = groupCharactersBy(characters, "group")
 
   return (
     <div className={"inline-block " + className}>
