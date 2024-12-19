@@ -47,7 +47,6 @@ function reducer(state: State, action: Action): State {
         console.error("No more characters to learn")
         return state
       }
-      console.log(action.correct)
       return {
         learned: [...state.learned.slice(0, -1), { ...state.current[0], correct: action.correct ?? false }], // [a, b, c, " "] => [a, b, c, d]
         current: [...state.current, state.toLearn[0]], // [d] => [d, e]
