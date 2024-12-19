@@ -381,7 +381,9 @@ const charactersSlice = createSlice({
 
         // Hiragana
         // Find Maximum Learning Order that has weight > 0
-        const lastHiraganaLearningOrder = Math.max(...state.filter(char => char.weight > 0 && char.alphabet === "hiragana").map(char => char.learningOrder))
+        const activeHiraganaCharacters = state.filter(char => char.weight > 0 && char.alphabet === "hiragana")
+
+        const lastHiraganaLearningOrder = activeHiraganaCharacters.length === 0 ? 0 : Math.max(...activeHiraganaCharacters.map(char => char.learningOrder))
 
         // If Level of all last added letters is >N, add next learning group to the pool
         const isHiraganaLevelAboveLimit = state.filter(char => char.learningOrder === lastHiraganaLearningOrder && char.alphabet === "hiragana").every(char => char.level > config.levelToAchieveToAddNewCharacters)
@@ -396,7 +398,9 @@ const charactersSlice = createSlice({
 
         // Katakana
         // Find Maximum Learning Order that has weight > 0
-        const lastKatakanaLearningOrder = Math.max(...state.filter(char => char.weight > 0 && char.alphabet === "katakana").map(char => char.learningOrder))
+        const activeKatakanaCharacters = state.filter(char => char.weight > 0 && char.alphabet === "katakana")
+
+        const lastKatakanaLearningOrder = activeKatakanaCharacters.length === 0 ? 0 : Math.max(...activeKatakanaCharacters.map(char => char.learningOrder))
 
         // If Level of all last added letters is >N, add next learning group to the pool
         const isKatakanaLevelAbove30 = state.filter(char => char.learningOrder === lastKatakanaLearningOrder && char.alphabet === "katakana").every(char => char.level > config.levelToAchieveToAddNewCharacters)
