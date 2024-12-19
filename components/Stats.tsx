@@ -3,9 +3,30 @@ import { selectCharacters } from "@/redux/selectors"
 import { useSelector } from "react-redux"
 import type { Character } from "@/redux/features/character/characterSlice"
 import { Fragment, useState, useEffect } from "react"
-import { CursorDropDown } from "./CursorDropDown"
+import { CursorDropDown } from "@/components/CursorDropDown"
+import { DropDown } from "@/components/DropDown"
+import { ProgressBar } from "@/components/ProgressBar"
 
 export const Stats = ({ className }: { className?: string }) => {
+  const characters = useSelector(selectCharacters)
+  const selectedCharacters = characters.filter(character => character.selected)
+  const progress = selectedCharacters.reduce((acc, character) => acc + character.level, 0) / selectedCharacters.length
+
+  return (
+    <div className={className}>
+      <DropDown title="Stats" subTitle={<ProgressBar fill={progress} />} className="mt-10">
+        <div>
+          <h1 className="text-xl">Hiragana | ひらがな</h1>
+          <h2>Gojūon | 五十音 | ごじゅうおん</h2>
+          <Hiragana className="mt-10" />
+        </div>
+      </DropDown>
+      <h1 className="mt-10 text-2xl flex items-center text-passive">Master Japanese Kana effortlessly! Every guess helps you improve, bringing you closer to fluency. Using the Spaced Repetition system, it helps you focus on what needs practice making your journey fun and effective. Note that short daily sessions are more effective than trying to learn everything at once!</h1>
+    </div>
+  )
+}
+
+const Hiragana = ({ className }: { className?: string }) => {
   const characters = useSelector(selectCharacters)
   const hiragana = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "monograph" && character.modifier === "none")
   const groupedByGroup = hiragana.reduce<Character[][]>((acc, character) => {

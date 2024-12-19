@@ -26,10 +26,19 @@ export default {
           "100%": {
             opacity: "1"
           }
+        },
+        fallDown: {
+          "0%": {
+            transform: "translateY(-100%)"
+          },
+          "100%": {
+            transform: "translateY(0)"
+          }
         }
       },
       animation: {
-        "fade-in": "fadeIn 0.3s ease-in-out"
+        "fade-in": "fadeIn 0.3s ease-in-out",
+        "fall-down": "fallDown 0.15s ease-in-out"
       }
     }
   },

@@ -24,11 +24,11 @@ const initialState: Character[] = [
   { symbol: "お", romanji: "o", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: true },
 
   // K group
-  { symbol: "か", romanji: "ka", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: true },
-  { symbol: "き", romanji: "ki", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: true },
-  { symbol: "く", romanji: "ku", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: true },
-  { symbol: "け", romanji: "ke", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: true },
-  { symbol: "こ", romanji: "ko", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: true },
+  { symbol: "か", romanji: "ka", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: false },
+  { symbol: "き", romanji: "ki", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: false },
+  { symbol: "く", romanji: "ku", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: false },
+  { symbol: "け", romanji: "ke", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: false },
+  { symbol: "こ", romanji: "ko", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: false },
 
   // S group
   { symbol: "さ", romanji: "sa", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "s", learningOrder: 2, selected: false },
@@ -45,11 +45,11 @@ const initialState: Character[] = [
   { symbol: "と", romanji: "to", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "t", learningOrder: 3, selected: false },
 
   // N group
-  { symbol: "な", romanji: "na", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: true },
-  { symbol: "に", romanji: "ni", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: true },
-  { symbol: "ぬ", romanji: "nu", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: true },
-  { symbol: "ね", romanji: "ne", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: true },
-  { symbol: "の", romanji: "no", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: true },
+  { symbol: "な", romanji: "na", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: false },
+  { symbol: "に", romanji: "ni", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: false },
+  { symbol: "ぬ", romanji: "nu", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: false },
+  { symbol: "ね", romanji: "ne", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: false },
+  { symbol: "の", romanji: "no", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "n", learningOrder: 4, selected: false },
 
   // H group
   { symbol: "は", romanji: "ha", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "monograph", modifier: "none", group: "h", learningOrder: 5, selected: false },
@@ -185,11 +185,11 @@ const initialState: Character[] = [
   { symbol: "ぴょ", romanji: "pyo", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "hiragana", phoneme: "digraph", modifier: "handakuten", group: "p", learningOrder: 27, selected: false },
 
   // Katakana
-  { symbol: "ア", romanji: "a", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: true },
-  { symbol: "イ", romanji: "i", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: true },
-  { symbol: "ウ", romanji: "u", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: true },
-  { symbol: "エ", romanji: "e", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: true },
-  { symbol: "オ", romanji: "o", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: true },
+  { symbol: "ア", romanji: "a", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: false },
+  { symbol: "イ", romanji: "i", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: false },
+  { symbol: "ウ", romanji: "u", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: false },
+  { symbol: "エ", romanji: "e", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: false },
+  { symbol: "オ", romanji: "o", level: 0, weight: 50, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "", learningOrder: 0, selected: false },
 
   // K-group
   { symbol: "カ", romanji: "ka", level: 0, weight: 0, streak: 0, cooldown: 0, alphabet: "katakana", phoneme: "monograph", modifier: "none", group: "k", learningOrder: 1, selected: false },

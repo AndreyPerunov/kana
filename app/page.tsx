@@ -6,9 +6,7 @@ export default function Home() {
   return (
     <Wrapper>
       <RouletteControls className="mt-10" />
-      <div className="flex justify-center">
-        <Stats className="mt-10" />
-      </div>
+      <Stats className="mt-10" />
     </Wrapper>
   )
 }
