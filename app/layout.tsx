@@ -11,7 +11,7 @@ const mPlus1p = M_PLUS_1p({
 
 export const metadata: Metadata = {
   title: "Learn Kana",
-  description: "Learn Japanese Kana with ease"
+  description: "Master Japanese Kana effortlessly! Every guess helps you improve, bringing you closer to fluency. Using the Spaced Repetition system, it helps you focus on what needs practice making your journey fun and effective. Note that short daily sessions are more effective than trying to learn everything at once!"
 }
 
 export default function RootLayout({

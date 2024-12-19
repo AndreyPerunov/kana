@@ -59,7 +59,6 @@ export const Stats = ({ className }: { className?: string }) => {
           </div>
         </div>
       </DropDown>
-      <h1 className="mt-10 text-2xl flex items-center text-passive">Master Japanese Kana effortlessly! Every guess helps you improve, bringing you closer to fluency. Using the Spaced Repetition system, it helps you focus on what needs practice making your journey fun and effective. Note that short daily sessions are more effective than trying to learn everything at once!</h1>
     </div>
   )
 }
