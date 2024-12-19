@@ -3,7 +3,18 @@
 @tailwind utilities;
 
 .scrollbar-br-rounded::-webkit-scrollbar-track {
-  border-radius: 0 0 10px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* width */

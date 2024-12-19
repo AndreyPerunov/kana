@@ -14,7 +14,7 @@ export const LearnNav = () => {
       </Link>
 
       <SettingsButton>
-        <IoIosSettings className="size-10 text-secondary transition-all group-hover:text-primary group-hover:rotate-180 group-hover:animate-pulse group-focus-within:text-primary group-focus-within:animate-pulse" />
+        <IoIosSettings className="size-10 text-secondary transition-all group-hover:text-primary group-hover:rotate-180 group-focus-within:rotate-180 group-hover:animate-pulse group-focus-within:text-primary group-focus-within:animate-pulse" />
       </SettingsButton>
     </nav>
   )
