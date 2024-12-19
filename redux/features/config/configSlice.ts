@@ -7,6 +7,7 @@ const initialState = {
   // UpdateCharacter
   addCharactersInProgression: true,
   levelToAchieveToAddNewCharacters: 20,
+  cooldown: 4,
 
   // Input
   submitOnRightAnswer: false
