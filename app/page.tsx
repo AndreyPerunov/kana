@@ -12,8 +12,8 @@ export default function Home() {
         </Link>
       </div>
       <div className="mt-8">
-        <Link href="https://github.com/AndreyPerunov/kana/issues" className="text-passive underline">
-          I found a bug!
+        <Link href="https://github.com/AndreyPerunov/kana/discussions/1" className="text-passive underline">
+          I found a bug! / I have a suggestion! / I hate your app! / I love your app! (Leave a feedback)
         </Link>
       </div>
     </Wrapper>
