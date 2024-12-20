@@ -31,18 +31,18 @@ export const InfiniteRoulette = ({ learned, current, toLearn, isSliding, animati
         </div>
       </div>
       {/* Current Character */}
-      <div className="size-20 bg-white rounded-xl overflow-hidden shadow">
+      <div className="h-20 w-24 bg-white rounded-xl overflow-hidden shadow">
         <div
           className={`flex 
           ${isSliding ? "transition-transform ease-in-out" : "translate-x-0"}`}
           onTransitionEnd={animationEnd}
           style={{
             transitionDuration: isSliding ? duration + "ms" : "0ms",
-            transform: isSliding ? "translateX(-5rem)" : "translateX(0)"
+            transform: isSliding ? "translateX(-6rem)" : "translateX(0)"
           }}
         >
           {current.map((letter, i) => (
-            <div key={i} className="size-20 flex justify-center items-center shrink-0">
+            <div key={i} className="h-20 w-24 flex justify-center items-center shrink-0">
               <span className={`text-5xl  ${isSliding ? "text-passive" : "text-secondary"} `}>{letter.symbol || ""}</span>
             </div>
           ))}
