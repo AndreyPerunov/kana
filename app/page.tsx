@@ -11,6 +11,11 @@ export default function Home() {
           Start Learning
         </Link>
       </div>
+      <div className="mt-8">
+        <Link href="https://github.com/AndreyPerunov/kana/issues" className="text-passive underline">
+          I found a bug!
+        </Link>
+      </div>
     </Wrapper>
   )
 }
