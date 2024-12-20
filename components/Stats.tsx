@@ -50,7 +50,7 @@ export const Stats = ({ className }: { className?: string }) => {
           <div>
             <h1 className="text-xl">Hiragana Dakuten | ひらがな濁点</h1>
             <h2>Yōon | 拗音 | ようおん</h2>
-            <HiraganDakutenDigraph className="mt-10" />
+            <HiraganaDakutenDigraph className="mt-10" />
           </div>
           <div>
             <h1 className="text-xl">Katakana Dakuten | カタカナ濁点</h1>
@@ -63,63 +63,63 @@ export const Stats = ({ className }: { className?: string }) => {
   )
 }
 
-const Hiragana = ({ className }: { className?: string }) => {
+export const Hiragana = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const hiragana = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "monograph" && character.modifier === "none")
 
-  return <Gojuuon className={className} characters={hiragana} />
+  return <Gojuuon className={className} characters={hiragana} onClick={onClick} />
 }
 
-const Katakana = ({ className }: { className?: string }) => {
+export const Katakana = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const katakana = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "monograph" && character.modifier === "none")
 
-  return <Gojuuon className={className} characters={katakana} />
+  return <Gojuuon onClick={onClick} className={className} characters={katakana} />
 }
 
-const HiraganaDakuten = ({ className }: { className?: string }) => {
+export const HiraganaDakuten = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const hiraganaDakuten = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "monograph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
 
-  return <GridByGroup className={className} characters={hiraganaDakuten} />
+  return <GridByGroup onClick={onClick} className={className} characters={hiraganaDakuten} />
 }
 
-const KatakanaDakuten = ({ className }: { className?: string }) => {
+export const KatakanaDakuten = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const katakanaDakuten = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "monograph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
 
-  return <GridByGroup className={className} characters={katakanaDakuten} />
+  return <GridByGroup onClick={onClick} className={className} characters={katakanaDakuten} />
 }
 
-const HiraganaDigraph = ({ className }: { className?: string }) => {
+export const HiraganaDigraph = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const hiraganaDigraph = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "digraph" && character.modifier === "none")
 
-  return <GridByGroup className={className} characters={hiraganaDigraph} />
+  return <GridByGroup onClick={onClick} className={className} characters={hiraganaDigraph} />
 }
 
-const KatakanaDigraph = ({ className }: { className?: string }) => {
+export const KatakanaDigraph = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const katakanaDigraph = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "digraph" && character.modifier === "none")
 
-  return <GridByGroup className={className} characters={katakanaDigraph} />
+  return <GridByGroup onClick={onClick} className={className} characters={katakanaDigraph} />
 }
 
-const HiraganDakutenDigraph = ({ className }: { className?: string }) => {
+export const HiraganaDakutenDigraph = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const hiraganaDakutenDigraph = characters.filter(character => character.alphabet === "hiragana" && character.phoneme === "digraph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
 
-  return <GridByGroup className={className} characters={hiraganaDakutenDigraph} />
+  return <GridByGroup onClick={onClick} className={className} characters={hiraganaDakutenDigraph} />
 }
 
-const KatakanaDakutenDigraph = ({ className }: { className?: string }) => {
+export const KatakanaDakutenDigraph = ({ className, onClick }: { className?: string; onClick?: (character: Character) => void }) => {
   const characters = useSelector(selectCharacters)
   const katakanaDakutenDigraph = characters.filter(character => character.alphabet === "katakana" && character.phoneme === "digraph" && (character.modifier === "dakuten" || character.modifier === "handakuten"))
 
-  return <GridByGroup className={className} characters={katakanaDakutenDigraph} />
+  return <GridByGroup onClick={onClick} className={className} characters={katakanaDakutenDigraph} />
 }
 
-const Gojuuon = ({ characters, className }: { characters: Character[]; className?: string }) => {
+export const Gojuuon = ({ characters, className, onClick }: { characters: Character[]; className?: string; onClick?: (character: Character) => void }) => {
   const groupedByGroup = groupCharactersBy(characters, "group")
 
   return (
@@ -133,7 +133,7 @@ const Gojuuon = ({ characters, className }: { characters: Character[]; className
               if (character.romanji === "n") {
                 return (
                   <Fragment key={baseKey}>
-                    <CharacterBlock character={character} />
+                    <CharacterBlock onClick={onClick} character={character} />
                     <EmptyBlocks n={4} baseKey={baseKey} />
                   </Fragment>
                 )
@@ -142,7 +142,7 @@ const Gojuuon = ({ characters, className }: { characters: Character[]; className
               if (character.romanji === "wa") {
                 return (
                   <Fragment key={baseKey}>
-                    <CharacterBlock character={character} />
+                    <CharacterBlock onClick={onClick} character={character} />
                     <EmptyBlocks n={3} baseKey={baseKey} />
                   </Fragment>
                 )
@@ -151,13 +151,13 @@ const Gojuuon = ({ characters, className }: { characters: Character[]; className
               if (character.romanji === "ya" || character.romanji === "yu") {
                 return (
                   <Fragment key={baseKey}>
-                    <CharacterBlock character={character} />
+                    <CharacterBlock onClick={onClick} character={character} />
                     <EmptyBlocks n={1} baseKey={baseKey} />
                   </Fragment>
                 )
               }
 
-              return <CharacterBlock character={character} key={`${baseKey}-final`} />
+              return <CharacterBlock onClick={onClick} character={character} key={`${baseKey}-final`} />
             })}
           </div>
         ))}
@@ -166,7 +166,7 @@ const Gojuuon = ({ characters, className }: { characters: Character[]; className
   )
 }
 
-const GridByGroup = ({ characters, className }: { characters: Character[]; className?: string }) => {
+export const GridByGroup = ({ characters, className, onClick }: { characters: Character[]; className?: string; onClick?: (character: Character) => void }) => {
   const groupedByGroup = groupCharactersBy(characters, "group")
 
   return (
@@ -177,7 +177,7 @@ const GridByGroup = ({ characters, className }: { characters: Character[]; class
             {group.map((character, i) => {
               const baseKey = `${character.group}-${character.symbol}-${i}`
 
-              return <CharacterBlock character={character} key={`${baseKey}-final`} />
+              return <CharacterBlock onClick={onClick} character={character} key={`${baseKey}-final`} />
             })}
           </div>
         ))}
@@ -186,7 +186,7 @@ const GridByGroup = ({ characters, className }: { characters: Character[]; class
   )
 }
 
-const CharacterBlock = ({ character }: { character: Character }) => {
+export const CharacterBlock = ({ character, onClick }: { character: Character; onClick?: (character: Character) => void }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   // hover effect with delay
@@ -210,6 +210,11 @@ const CharacterBlock = ({ character }: { character: Character }) => {
   return (
     <CursorDropDown xOffset={20} yOffset={20} isExpanded={isExpanded} content={<DropdownContent character={character} />}>
       <div
+        onClick={() => {
+          if (onClick) {
+            onClick(character)
+          }
+        }}
         onMouseEnter={() => {
           setIsHovered(true)
         }}
@@ -218,7 +223,7 @@ const CharacterBlock = ({ character }: { character: Character }) => {
         }}
         className={`flex gap-4 items-center size-10 rounded-xl justify-center shadow transition-all relative ${character.selected ? "border border-primary" : ""} ${isExpanded ? "scale-125" : ""} ${character.level < 20 ? "bg-level-1" : character.level < 40 ? "bg-level-2" : character.level < 60 ? "bg-level-3" : character.level < 80 ? "bg-level-4" : character.level <= 100 ? "bg-level-5" : "bg-level-1"}`}
       >
-        <span style={{ pointerEvents: "none" }} className={character.selected ? "text-black" : "text-passive"}>
+        <span style={{ pointerEvents: "none" }} className={`select-none ${character.selected ? "text-black" : "text-passive"}`}>
           {character.symbol}
         </span>
       </div>
@@ -226,7 +231,7 @@ const CharacterBlock = ({ character }: { character: Character }) => {
   )
 }
 
-const DropdownContent = ({ character }: { character: Character }) => {
+export const DropdownContent = ({ character }: { character: Character }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center gap-8">
@@ -253,7 +258,7 @@ const DropdownContent = ({ character }: { character: Character }) => {
   )
 }
 
-const EmptyBlocks = ({ n, baseKey }: { n: number; baseKey: string }) => {
+export const EmptyBlocks = ({ n, baseKey }: { n: number; baseKey: string }) => {
   return (
     <>
       {Array(n)

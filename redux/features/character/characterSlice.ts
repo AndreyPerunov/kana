@@ -395,6 +395,7 @@ const charactersSlice = createSlice({
       char.weight = character.weight
       char.streak = character.streak
       char.cooldown = character.cooldown
+      char.selected = character.selected
     }
   }
 })
