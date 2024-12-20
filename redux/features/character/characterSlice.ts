@@ -396,6 +396,9 @@ const charactersSlice = createSlice({
       char.streak = character.streak
       char.cooldown = character.cooldown
       char.selected = character.selected
+    },
+    loadState(state, action) {
+      return action.payload
     }
   }
 })

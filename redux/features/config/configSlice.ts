@@ -19,6 +19,9 @@ const configSlice = createSlice({
   reducers: {
     updateConfig(state, action) {
       return { ...state, ...action.payload }
+    },
+    loadState(state, action) {
+      return action.payload
     }
   }
 })
