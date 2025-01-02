@@ -221,7 +221,7 @@ export const CharacterBlock = ({ character, onClick }: { character: Character; o
         onMouseLeave={() => {
           setIsHovered(false)
         }}
-        className={`flex gap-4 items-center size-10 rounded-xl justify-center shadow transition-all relative ${character.selected ? "border border-primary" : ""} ${isExpanded ? "scale-125" : ""} ${character.level < 20 ? "bg-level-1" : character.level < 40 ? "bg-level-2" : character.level < 60 ? "bg-level-3" : character.level < 80 ? "bg-level-4" : character.level <= 100 ? "bg-level-5" : "bg-level-1"}`}
+        className={`flex gap-4 items-center size-10 rounded-xl justify-center shadow transition-all relative ${onClick && "cursor-pointer"} ${character.selected ? "border border-primary" : ""} ${isExpanded ? "scale-125" : ""} ${character.level < 20 ? "bg-level-1" : character.level < 40 ? "bg-level-2" : character.level < 60 ? "bg-level-3" : character.level < 80 ? "bg-level-4" : character.level <= 100 ? "bg-level-5" : "bg-level-1"}`}
       >
         <span style={{ pointerEvents: "none" }} className={`select-none ${character.selected ? "text-black" : "text-passive"}`}>
           {character.symbol}
