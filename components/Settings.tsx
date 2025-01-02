@@ -105,7 +105,7 @@ const Slider = ({ label, value, onChange, min, max, step, unit }: { label: strin
     if (e.key === "Enter") {
       const newValue = Math.max(min, Math.min(max, inputNumberValue))
       setInputNumberValue(roundToNearestStep(newValue))
-      onChange(newValue)
+      onChange(roundToNearestStep(newValue))
     }
     if (e.key === "ArrowUp") {
       const newValue = Math.max(min, Math.min(max, inputNumberValue + step))
